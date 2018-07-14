@@ -12,4 +12,5 @@ public:
 
 private:
     std::vector<Path> population;
+    int sizeOfPopulation;
 };   

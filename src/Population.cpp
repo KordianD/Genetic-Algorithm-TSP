@@ -1,6 +1,6 @@
 #include "Population.hpp"
 
-Population::Population(int sizeOfPopulation, int numberOfPoints, const Initializer& initializer)
+Population::Population(int sizeOfPopulation, int numberOfPoints, const Initializer& initializer) : sizeOfPopulation(sizeOfPopulation)
 {
     population.reserve(sizeOfPopulation);
     for (auto i = 0; i < sizeOfPopulation; ++i)

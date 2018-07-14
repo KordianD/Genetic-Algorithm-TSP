@@ -7,7 +7,9 @@ struct Path
 {
 public:
     Path(int, Initializer);
+    auto calculateFitness();
 
     std::vector<cv::Point> path;
     Initializer initializer;
+    int numberOfPoints;
 };
