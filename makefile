@@ -1,10 +1,30 @@
+EXE = TSP
+
 CC = g++
-CFLAGS = -g -Wall -Wextra -Wzero-as-null-pointer-constant 
-SRCS = main.cpp Initializer.cpp Path.cpp
-PROG = genetic_tsp
+
+SRC_DIR = src
+OBJ_DIR = obj
+
+SRC = $(wildcard $(SRC_DIR)/*.cpp)
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+
+CPPFLAGS += -Iinclude
+CFLAGS += -g -Wall -Wextra -Wzero-as-null-pointer-constant 
+LDFLAGS += -Llib
+LDLIBS += -lm
 
 OPENCV = `pkg-config opencv --cflags --libs`
 LIBS = $(OPENCV)
 
-$(PROG):$(SRCS)
-	$(CC) $(CFLAGS) -o $(PROG) $(SRCS) $(LIBS)
+.PHONY: all clean
+
+all: $(EXE)
+
+$(EXE): $(OBJ)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) $(LIBS) -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+clean:
+	$(RM) $(OBJ)
