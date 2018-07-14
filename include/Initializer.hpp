@@ -1,11 +1,12 @@
 #pragma once
+
 #include <random>
 #include <algorithm>
 
 class Initializer
 {
 public:
-    Initializer(int lowerBound, int upperBound);
+    Initializer(int, int);
     int getNumber();
  
 private:

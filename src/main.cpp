@@ -11,9 +11,5 @@ int main()
     Initializer initializer(1, sizeOfImage);
     Path firstPath(numberOfPoints, initializer);    
 
-    for(auto i = 0; i < numberOfPoints; ++i)
-    {
-        firstPath.path.emplace_back(initializer.getNumber(), initializer.getNumber());
-    }
     return(0);
 }

@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+TSP
+
+# Visual studio code
+.vscode
