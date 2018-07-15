@@ -6,10 +6,11 @@
 struct Path
 {
 public:
-    Path(int, Initializer);
-    auto calculateFitness();
+    Path(int, Initializer&);
+    double calculateFitness() const;
 
+private:
     std::vector<cv::Point> path;
-    Initializer initializer;
+    Initializer& initializer;
     int numberOfPoints;
 };

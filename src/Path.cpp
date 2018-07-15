@@ -1,6 +1,7 @@
 #include "Path.hpp"
+#include "Initializer.hpp"
 
-Path::Path(int numberOfPoints, Initializer initializer) : initializer(initializer), numberOfPoints(numberOfPoints) 
+Path::Path(int numberOfPoints, Initializer& initializer) : initializer(initializer), numberOfPoints(numberOfPoints) 
 {
     for(auto i = 0; i < numberOfPoints; ++i)
     {
@@ -8,7 +9,7 @@ Path::Path(int numberOfPoints, Initializer initializer) : initializer(initialize
     }
 }
 
-auto Path::calculateFitness()
+double Path::calculateFitness() const
 {
     auto sum = 0.0;
 

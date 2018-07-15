@@ -11,7 +11,6 @@ int main()
     
     Initializer initializer(1, sizeOfImage);
     
-    Population population(sizeOfPopulation, numberOfPoints, initializer);   
-
+    Population population(sizeOfPopulation, numberOfPoints, initializer);
     return(0);
 }
