@@ -31,6 +31,7 @@
 *.out
 *.app
 TSP
+tests_exe
 
 # Visual studio code
 .vscode
