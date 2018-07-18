@@ -2,6 +2,8 @@
 #include "PointInitializer.hpp"
 #include "Population.hpp"
 
+
+#include <iostream>
 int main()
 {
     int sizeOfImage = 800;
@@ -11,5 +13,6 @@ int main()
     PointInitializer initializer(1, sizeOfImage);
 
     Population population(sizeOfPopulation, numberOfPoints, initializer);
+
     return(0);
 }

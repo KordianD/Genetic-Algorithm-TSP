@@ -7,22 +7,19 @@ CPP_SRCS += \
 ../src/Genetic_TSP.cpp \
 ../src/Path.cpp \
 ../src/PointInitializer.cpp \
-../src/Population.cpp \
-../src/dziala.cpp 
+../src/Population.cpp 
 
 OBJS += \
 ./src/Genetic_TSP.o \
 ./src/Path.o \
 ./src/PointInitializer.o \
-./src/Population.o \
-./src/dziala.o 
+./src/Population.o 
 
 CPP_DEPS += \
 ./src/Genetic_TSP.d \
 ./src/Path.d \
 ./src/PointInitializer.d \
-./src/Population.d \
-./src/dziala.d 
+./src/Population.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

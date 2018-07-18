@@ -4,17 +4,14 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../tests/Foo.cpp \
 ../tests/PathTestSuite.cpp \
 ../tests/UnitTests.cpp 
 
 OBJS += \
-./tests/Foo.o \
 ./tests/PathTestSuite.o \
 ./tests/UnitTests.o 
 
 CPP_DEPS += \
-./tests/Foo.d \
 ./tests/PathTestSuite.d \
 ./tests/UnitTests.d 
 
