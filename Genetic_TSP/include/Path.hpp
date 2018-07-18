@@ -1,16 +1,11 @@
 #pragma once
 
 #include "Initializer.hpp"
+#include "Point.hpp"
 #include <vector>
 
-struct Point
-{
-	Point(int x, int y) : x(x), y(y) {}
-	int x=0;
-	int y=0;
-};
 
-struct Path
+class Path
 {
 public:
     Path(int, Initializer&);

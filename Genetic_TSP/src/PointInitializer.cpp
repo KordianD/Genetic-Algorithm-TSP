@@ -9,5 +9,5 @@ PointInitializer::PointInitializer(int lowerBound, int upperBound) : rand(lowerB
 
 double PointInitializer::getNumber()
 {
-    return rand(rng);
+    return double(rand(rng));
 }
