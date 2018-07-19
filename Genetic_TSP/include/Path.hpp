@@ -3,16 +3,19 @@
 #include "Initializer.hpp"
 #include "Point.hpp"
 #include <vector>
+#include <memory>
 
 
 class Path
 {
 public:
-    Path(int, Initializer&);
+    Path(int, std::shared_ptr<Initializer>);
+    double getFitness() const;
     double calculateFitness() const;
 
 private:
     std::vector<Point> path;
-    Initializer& initializer;
-    int numberOfPoints;
+    std::shared_ptr<Initializer> initializer;
+    int numberOfPoints {};
+    double fitness {};
 };

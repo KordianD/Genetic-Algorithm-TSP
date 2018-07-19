@@ -3,14 +3,13 @@
 #include "Population.hpp"
 
 
-#include <iostream>
 int main()
 {
     int sizeOfImage = 800;
     int numberOfPoints = 100;
     int sizeOfPopulation = 100;
 
-    PointInitializer initializer(1, sizeOfImage);
+    std::shared_ptr<Initializer> initializer = std::make_shared<PointInitializer>(1, sizeOfImage);
 
     Population population(sizeOfPopulation, numberOfPoints, initializer);
 

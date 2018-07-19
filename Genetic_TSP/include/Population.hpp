@@ -5,7 +5,8 @@
 class Population
 {
 public:
-    Population(int, int, Initializer&);
+    Population(int, int, std::shared_ptr<Initializer>);
+    void performSelection(double);
 
 private:
     std::vector<Path> population;
