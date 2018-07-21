@@ -9,13 +9,11 @@
 class Path
 {
 public:
-    Path(int, std::shared_ptr<Initializer>);
+    Path(std::vector<Point>);
     double getFitness() const;
     double calculateFitness() const;
 
 private:
     std::vector<Point> path;
-    std::shared_ptr<Initializer> initializer;
-    int numberOfPoints {};
     double fitness {};
 };

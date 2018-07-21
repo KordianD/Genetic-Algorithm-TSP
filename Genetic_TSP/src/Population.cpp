@@ -1,7 +1,6 @@
 #include "Population.hpp"
 #include <algorithm>
 #include <numeric>
-#include <unordered_map>
 #include <stdexcept>
 
 Population::Population(int sizeOfPopulation, int numberOfPoints, std::shared_ptr<Initializer> initializer) : sizeOfPopulation(sizeOfPopulation)
@@ -12,10 +11,10 @@ Population::Population(int sizeOfPopulation, int numberOfPoints, std::shared_ptr
 	}
 
     population.reserve(sizeOfPopulation);
-    for (auto i = 0; i < sizeOfPopulation; ++i)
-    {
-        population.emplace_back(numberOfPoints, initializer);
-    }
+//    for (auto i = 0; i < sizeOfPopulation; ++i)
+//    {
+//        population.emplace_back(numberOfPoints, initializer);
+//    }
 }
 
 void Population::performSelection(double percentageOfAllPopulation)
@@ -33,12 +32,18 @@ void Population::performSelection(double percentageOfAllPopulation)
 	std::vector<int> map(population.size());
 
 	auto size = population.size();
-	//map[0] = population[0];
-
-    for (auto i = 1; i < size; ++i)
-    {
-    	;
-    }
-
 
 }
+
+//Path Population::performTournamentSelection()
+//{
+//	// current = random initialize
+//	// numberOfPaths = population.size();
+//	// for (auto i = 0; i < k; ++i)
+//	//{
+//		 // if (population[randomNumber] > current)
+//         	//{
+//         		 //current = population[randomNumber];
+//         	//}
+//	//}
+//}

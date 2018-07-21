@@ -3,22 +3,13 @@
 #include <cmath>
 #include <stdexcept>
 
-Path::Path(int numberOfPoints, std::shared_ptr<Initializer> initializer) : initializer(initializer)
+Path::Path(std::vector<Point> path) : path(std::move(path))
 {
-	if (numberOfPoints <= 0)
+	if (this->path.size() <= 1)
 	{
-		throw std::invalid_argument("numberOfPoints must be greater than 0");
+		throw std::invalid_argument("Number of points in Path should be greater than 1");
 	}
 
-	path.reserve(numberOfPoints);
-    for(auto i = 0; i < numberOfPoints; ++i)
-    {
-        path.emplace_back(initializer->getNumber(), initializer->getNumber());
-    }
-
-    path.emplace_back(path[0].x, path[0].y);
-
-    this->numberOfPoints = path.size();
     fitness = calculateFitness();
 }
 
@@ -30,8 +21,9 @@ double Path::getFitness() const
 double Path::calculateFitness() const
 {
     auto sum = 0.0;
+    auto numberOfPoints = path.size();
 
-    for (auto i = 0; i < numberOfPoints-1; ++i)
+    for (size_t i = 0; i < numberOfPoints-1; ++i)
     {
         sum += pow(path[i].x - path[i+1].x, 2.0) + pow(path[i].y - path[i+1].y, 2.0);
     }
