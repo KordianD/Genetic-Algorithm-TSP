@@ -29,12 +29,13 @@ void Path::mutate(int lowerBound, int upperBound)
 	std::swap(path[lowerBound], path[upperBound]);
 }
 
-Path Path::crossover(const Path& parent)
+std::vector<Point> Path::crossover(const Path& parent)
 {
 	std::vector<Point> child(path.size());
 	int halfOfSize =  path.size()/2;
 
 	std::copy(std::begin(path), std::begin(path) + halfOfSize, std::back_inserter(child));
+	child[path.size()-1] = path[0];
 
 	for (auto const& elem : parent.path)
 	{

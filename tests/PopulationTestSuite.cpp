@@ -36,3 +36,5 @@ TEST(PopulationTestSuite, ShouldReturnNumberInPassedRange)
   EXPECT_LE(randomNumber, UPPER_BOUND);
   EXPECT_GE(randomNumber, LOWER_BOUND);
 }
+
+

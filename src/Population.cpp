@@ -60,7 +60,7 @@ void Population::mutation()
 {
 	for (auto& elem : population)
 	{
-		elem.mutate(getRandomNumberInRange(0, sizeOfSolution), getRandomNumberInRange(0, sizeOfSolution));
+		elem.mutate(getRandomNumberInRange(1, sizeOfSolution-1), getRandomNumberInRange(1, sizeOfSolution-1));
 	}
 }
 
