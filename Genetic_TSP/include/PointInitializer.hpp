@@ -1,16 +1,9 @@
 #pragma once
+#include <Path.hpp>
 
-#include <random>
-#include <algorithm>
-#include "Initializer.hpp"
-
-class PointInitializer : public Initializer
+class PointInitializer
 {
 public:
-	PointInitializer(int, int);
-	double getNumber() override;
-
-private:
-    std::mt19937 rng {};
-    std::uniform_int_distribution<std::mt19937::result_type> rand {};
+	virtual ~PointInitializer() = default;
+	virtual std::vector<Point> getInitialSolution(int) = 0;
 };

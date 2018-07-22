@@ -2,7 +2,13 @@
 
 struct Point
 {
-	Point(int x, int y) : x(x), y(y) {}
-	int x=0;
-	int y=0;
+	Point() = default;
+	Point(double x, double y) : x(x), y(y) {}
+
+	bool operator==(const Point &rhs) const {
+        return rhs.x == x and rhs.y == y;
+    }
+
+	double x=0;
+	double y=0;
 };

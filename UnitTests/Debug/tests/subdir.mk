@@ -5,14 +5,23 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../tests/PathTestSuite.cpp \
+../tests/PointTestSuite.cpp \
+../tests/PopulationTestSuite.cpp \
+../tests/RandomPointInitializerTestSuite.cpp \
 ../tests/UnitTests.cpp 
 
 OBJS += \
 ./tests/PathTestSuite.o \
+./tests/PointTestSuite.o \
+./tests/PopulationTestSuite.o \
+./tests/RandomPointInitializerTestSuite.o \
 ./tests/UnitTests.o 
 
 CPP_DEPS += \
 ./tests/PathTestSuite.d \
+./tests/PointTestSuite.d \
+./tests/PopulationTestSuite.d \
+./tests/RandomPointInitializerTestSuite.d \
 ./tests/UnitTests.d 
 
 
