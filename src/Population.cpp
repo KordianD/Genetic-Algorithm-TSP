@@ -15,7 +15,11 @@ Population::Population(int sizeOfPopulation, int sizeOfSolution, std::shared_ptr
 
 	population.reserve(sizeOfPopulation);
 	createAllInitialSolutions();
-	bestSolution = population[0];
+	bestSolution = *std::min_element(population.begin(),
+                                     population.end(),
+                                     [] (const auto& lhs, const auto& rhs) {
+                                         return lhs.getFitness() < rhs.getFitness();
+                                     });
 }
 
 
@@ -32,13 +36,13 @@ void Population::createAllInitialSolutions()
 	auto rng = std::default_random_engine {};
 	std::vector<Point> initialSolution = initializer->getInitialSolution(sizeOfSolution);
 
-	for (auto i = 0; i < sizeOfPopulation; ++i)
-	{
-		std::shuffle(std::begin(initialSolution), std::end(initialSolution), rng);
-		std::vector<Point> temp(initialSolution);
-		temp.emplace_back(temp[0]);
-		population.emplace_back(initialSolution);
-	}
+	for (auto i = 0; i < sizeOfPopulation; ++i) {
+        std::shuffle(std::begin(initialSolution), std::end(initialSolution), rng);
+        std::vector<Point> temp(initialSolution);
+        temp.emplace_back(temp[0]);
+
+        population.emplace_back(temp);
+    }
 }
 
 int Population::getRandomNumberInRange(int lowerBound, int upperBound)
@@ -102,9 +106,9 @@ void Population::updatePopulation()
 
 void Population::checkForBetterSolution()
 {
-    auto bestSolutionInCurrentPopulation = *std::max_element(population.begin(),
-                                                            population.end(),
-                                                            [] (const Path& lhs, const Path& rhs) {
+    auto bestSolutionInCurrentPopulation = *std::min_element(population.begin(),
+                                                             population.end(),
+                                                             [] (const auto& lhs, const auto& rhs) {
                                                                 return lhs.getFitness() < rhs.getFitness();
                                                                 });
 

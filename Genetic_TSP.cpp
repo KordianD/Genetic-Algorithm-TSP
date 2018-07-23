@@ -6,8 +6,8 @@
 int main()
 {
     auto numberOfPoints = 7;
-    auto sizeOfPopulation = 1000;
-    auto numberOfIteration = 1000;
+    auto sizeOfPopulation = 100;
+    auto numberOfIteration = 100;
 
     std::shared_ptr<PointInitializer> initializer = std::make_shared<FilePointInitializer>("../test.txt");
 
@@ -21,6 +21,5 @@ int main()
         std::cout << elem.x << " " << elem.y << std::endl;
     }
 
-    std::cout << "elo" << std::endl;
     return(0);
 }
