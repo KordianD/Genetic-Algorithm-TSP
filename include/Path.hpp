@@ -9,7 +9,7 @@
 class Path
 {
 public:
-    Path(std::vector<Point>);
+    explicit Path(std::vector<Point>);
     double getFitness() const;
     double calculateFitness() const;
     std::vector<Point> getPath();

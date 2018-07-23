@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 #include "Path.hpp"
-#include <stdexcept>
 
 namespace
 {
@@ -10,8 +9,10 @@ namespace
   constexpr int SECOND_INDEX_TO_MUTATE {2};
   const std::vector<Point> EMPTY_PATH {};
   const std::vector<Point> PATH {{1,2}, {3,4}, {5,6}, {7,8}, {1,2}};
-  const std::vector<Point> MUTATE_PATH {{5,6}, {7,8}, {3,4}, {1,2}, {5,6}};
+  const std::vector<Point> MUTATE_PATH {{5,6}, {1,2}, {3,4}, {7,8}, {5,6}};
   const std::vector<Point> THE_SAME_PATH {{5,5}, {5,5}};
+  const Path PATH_TO_CROSSOVER {MUTATE_PATH};
+  const std::vector<Point> AFTER_CROSSOVER_PATH {{1,2}, {3,4}, {5,6}, {7,8}, {1,2}};
 }
 
 using namespace ::testing;
@@ -52,8 +53,10 @@ TEST(PathTestSuite, ShouldMakeCrossoverAndReturnCrossedPoints)
 {
   Path sut(PATH);
 
+  auto mutatedPath = sut.crossover(PATH_TO_CROSSOVER);
 
-
+  EXPECT_EQ(mutatedPath, AFTER_CROSSOVER_PATH);
+  EXPECT_EQ(mutatedPath.size(), PATH.size());
 }
 
 

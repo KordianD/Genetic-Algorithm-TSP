@@ -1,7 +1,5 @@
 #include <PointInitializer.hpp>
-#include "Path.hpp"
 #include <cmath>
-#include <stdexcept>
 #include <algorithm>
 
 Path::Path(std::vector<Point> path) : path(std::move(path))
@@ -31,11 +29,11 @@ void Path::mutate(int lowerBound, int upperBound)
 
 std::vector<Point> Path::crossover(const Path& parent)
 {
-	std::vector<Point> child(path.size());
+	std::vector<Point> child;
+	child.reserve(path.size());
 	int halfOfSize =  path.size()/2;
 
 	std::copy(std::begin(path), std::begin(path) + halfOfSize, std::back_inserter(child));
-	child[path.size()-1] = path[0];
 
 	for (auto const& elem : parent.path)
 	{
@@ -43,16 +41,12 @@ std::vector<Point> Path::crossover(const Path& parent)
 		{
 			child.emplace_back(elem);
 		}
-
-		if (child.size() == path.size())
-		{
-			break;
-		}
 	}
+
+	child.emplace_back(path[0]);
 
 	return child;
 }
-
 
 double Path::calculateFitness() const
 {

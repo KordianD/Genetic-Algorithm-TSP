@@ -1,5 +1,4 @@
 #include "RandomPointInitializer.hpp"
-#include <random>
 
 RandomPointInitializer::RandomPointInitializer(int lowerBound, int upperBound) : rand(lowerBound, upperBound)
 {
