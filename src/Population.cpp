@@ -1,11 +1,12 @@
 #include "Population.hpp"
 #include <algorithm>
 #include <random>
-#include <numeric>
-#include <stdexcept>
 #include <iterator>
 
-Population::Population(int sizeOfPopulation, int sizeOfSolution, std::shared_ptr<PointInitializer> initializer) : sizeOfPopulation(sizeOfPopulation), sizeOfSolution(sizeOfSolution), initializer(initializer)
+Population::Population(int sizeOfPopulation, int sizeOfSolution, std::shared_ptr<PointInitializer> initializer) :
+        sizeOfPopulation(sizeOfPopulation),
+        sizeOfSolution(sizeOfSolution),
+        initializer(std::move(initializer))
 {
 	if (sizeOfPopulation <= 0)
 	{
@@ -14,8 +15,17 @@ Population::Population(int sizeOfPopulation, int sizeOfSolution, std::shared_ptr
 
 	population.reserve(sizeOfPopulation);
 	createAllInitialSolutions();
+	bestSolution = population[0];
 }
 
+
+void Population::runAlgorithm(int numberOfIterations)
+{
+    for (auto i = 0; i < numberOfIterations; ++i)
+    {
+        updatePopulation();
+    }
+}
 
 void Population::createAllInitialSolutions()
 {
@@ -25,6 +35,8 @@ void Population::createAllInitialSolutions()
 	for (auto i = 0; i < sizeOfPopulation; ++i)
 	{
 		std::shuffle(std::begin(initialSolution), std::end(initialSolution), rng);
+		std::vector<Point> temp(initialSolution);
+		temp.emplace_back(temp[0]);
 		population.emplace_back(initialSolution);
 	}
 }
@@ -85,4 +97,24 @@ void Population::updatePopulation()
 	population = newPopulation;
 
 	mutation();
+    checkForBetterSolution();
+}
+
+void Population::checkForBetterSolution()
+{
+    auto bestSolutionInCurrentPopulation = *std::max_element(population.begin(),
+                                                            population.end(),
+                                                            [] (const Path& lhs, const Path& rhs) {
+                                                                return lhs.getFitness() < rhs.getFitness();
+                                                                });
+
+    if (bestSolutionInCurrentPopulation.getFitness() < bestSolution->getFitness())
+    {
+        bestSolution = bestSolutionInCurrentPopulation;
+    }
+}
+
+Path Population::getBestSolution()
+{
+    return *bestSolution;
 }

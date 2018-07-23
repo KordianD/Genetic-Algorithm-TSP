@@ -1,22 +1,25 @@
-#include <RandomPointInitializer.hpp>
-#include <vector>
+#include <FilePointInitializer.hpp>
 #include "Population.hpp"
-
-#include <random>
 #include <iostream>
+
+
 int main()
 {
-     int sizeOfImage = 800;
-//    int numberOfPoints = 100;
-//    int sizeOfPopulation = 100;
-//
-    std::shared_ptr<PointInitializer> initializer = std::make_shared<RandomPointInitializer>(1, sizeOfImage);
-//
-//    Population population(sizeOfPopulation, numberOfPoints, initializer);
+    auto numberOfPoints = 7;
+    auto sizeOfPopulation = 1000;
+    auto numberOfIteration = 1000;
 
-    std::random_device rd;
-    std::mt19937 eng(rd());
-    std::uniform_int_distribution<> distr(25, 63);
+    std::shared_ptr<PointInitializer> initializer = std::make_shared<FilePointInitializer>("../test.txt");
+
+    Population population(sizeOfPopulation, numberOfPoints, initializer);
+    population.runAlgorithm(numberOfIteration);
+
+    auto result = population.getBestSolution().getPath();
+
+    for (auto elem : result)
+    {
+        std::cout << elem.x << " " << elem.y << std::endl;
+    }
 
     std::cout << "elo" << std::endl;
     return(0);

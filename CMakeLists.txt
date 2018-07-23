@@ -16,11 +16,15 @@ file(GLOB TSP_SRC
         "src/*.cpp"
         )
 
+file(GLOB TSP_TESTS
+        "tests/*.cpp"
+        )
+
+
 add_executable(TSP_FINAL Genetic_TSP.cpp ${TSP_SRC})
 
 #Define your executable
-add_executable(EXECUTABLE_NAME ${TSP_SRC} tests/UnitTests.cpp tests/PathTestSuite.cpp tests/PointTestSuite.cpp tests/PopulationTestSuite.cpp
-        tests/RandomPointInitializerTestSuite.cpp)
+add_executable(EXECUTABLE_NAME ${TSP_SRC} ${TSP_TESTS})
 
 #Link with GoogleTest
 target_link_libraries(EXECUTABLE_NAME gtest gtest_main)
