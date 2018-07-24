@@ -24,5 +24,7 @@ std::vector<Point> FilePointInitializer::getInitialSolution(int sizeOfInitialSol
         throw std::invalid_argument("There are not enough data to load from file");
     }
 
+    infile.clear();
+    infile.seekg(0, std::ios::beg);
     return initialSolution;
 }

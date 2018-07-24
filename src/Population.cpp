@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <random>
 #include <iterator>
+#include <iostream>
 
 Population::Population(int sizeOfPopulation, int sizeOfSolution, std::shared_ptr<PointInitializer> initializer) :
         sizeOfPopulation(sizeOfPopulation),
@@ -20,6 +21,7 @@ Population::Population(int sizeOfPopulation, int sizeOfSolution, std::shared_ptr
                                      [] (const auto& lhs, const auto& rhs) {
                                          return lhs.getFitness() < rhs.getFitness();
                                      });
+
 }
 
 
@@ -74,9 +76,17 @@ void Population::addBestPathsFromPreviousPopulationToNextPopulation(std::vector<
 
 void Population::mutation()
 {
+    auto mutationRate = 0.1;
+    std::random_device rd;
+    std::mt19937 eng(rd());
+    std::uniform_int_distribution<> distr(0, 1);
+
 	for (auto& elem : population)
 	{
-		elem.mutate(getRandomNumberInRange(1, sizeOfSolution-1), getRandomNumberInRange(1, sizeOfSolution-1));
+	    if (distr(eng) < mutationRate)
+	    {
+            elem.mutate(getRandomNumberInRange(1, sizeOfSolution - 1), getRandomNumberInRange(1, sizeOfSolution - 1));
+        }
 	}
 }
 
@@ -111,6 +121,7 @@ void Population::checkForBetterSolution()
                                                              [] (const auto& lhs, const auto& rhs) {
                                                                 return lhs.getFitness() < rhs.getFitness();
                                                                 });
+
 
     if (bestSolutionInCurrentPopulation.getFitness() < bestSolution->getFitness())
     {
