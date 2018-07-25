@@ -16,7 +16,7 @@ TEST(RandomPointInitializerTestSuite, ShouldReturnEmptySolutionWhenSizeOfSolutio
 {
   RandomPointInitializer sut(LOWER_BOUND, UPPER_BOUND);
 
-  auto initialSolution = sut.getInitialSolution(ZERO_SIZE_OF_SOLUTION);
+  auto initialSolution = sut.getInitialPoints(ZERO_SIZE_OF_SOLUTION);
 
   ASSERT_TRUE(initialSolution.empty());
 }
@@ -26,7 +26,7 @@ TEST(RandomPointInitializerTestSuite, ShouldReturnCorrectlyInitializedSolution)
 {
   RandomPointInitializer sut(LOWER_BOUND, UPPER_BOUND);
 
-  auto initialSolution = sut.getInitialSolution(SIZE_OF_SOLUTION);
+  auto initialSolution = sut.getInitialPoints(SIZE_OF_SOLUTION);
 
   EXPECT_EQ(initialSolution.size(), SIZE_OF_SOLUTION);
 }

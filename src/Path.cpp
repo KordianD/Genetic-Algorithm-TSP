@@ -51,9 +51,8 @@ std::vector<Point> Path::crossover(const Path& parent) const
 double Path::calculateFitness() const
 {
     auto sum = 0.0;
-    auto numberOfPoints = path.size();
 
-    for (size_t i = 0; i < numberOfPoints-1; ++i)
+    for (size_t i = 0; i < path.size()-1; ++i)
     {
         sum += pow(path[i].x - path[i+1].x, 2.0) + pow(path[i].y - path[i+1].y, 2.0);
     }

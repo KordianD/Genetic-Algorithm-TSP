@@ -5,7 +5,7 @@ RandomPointInitializer::RandomPointInitializer(int lowerBound, int upperBound) :
     rng.seed(std::random_device()());
 }
 
-std::vector<Point> RandomPointInitializer::getInitialSolution(int sizeOfSolution)
+std::vector<Point> RandomPointInitializer::getInitialPoints(int sizeOfSolution)
 {
 	std::vector<Point> initialSolution;
 	initialSolution.reserve(sizeOfSolution);

@@ -14,12 +14,13 @@ public:
     void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path>&, int);
     void updatePopulation();
     Path getBestSolution();
+    Path getBestSolutionInCurrentPopulation();
     void runAlgorithm(int);
 
 private:
     void createAllInitialSolutions();
     void checkForBetterSolution();
-    Path getBestSolutionInCurrentPopulation();
+
     std::vector<Path> population;
     int sizeOfPopulation;
     int sizeOfSolution;

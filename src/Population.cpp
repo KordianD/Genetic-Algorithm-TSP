@@ -1,6 +1,5 @@
 #include "Population.hpp"
 #include <algorithm>
-#include <random>
 #include <iterator>
 #include <iostream>
 
@@ -42,7 +41,7 @@ void Population::runAlgorithm(int numberOfIterations)
 void Population::createAllInitialSolutions()
 {
 	auto rng = std::default_random_engine {};
-	std::vector<Point> initialSolution = initializer->getInitialSolution(sizeOfSolution);
+	std::vector<Point> initialSolution = initializer->getInitialPoints(sizeOfSolution);
 
 	for (auto i = 0; i < sizeOfPopulation; ++i) {
         std::shuffle(std::begin(initialSolution), std::end(initialSolution), rng);

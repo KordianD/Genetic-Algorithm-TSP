@@ -4,7 +4,7 @@
 
 FilePointInitializer::FilePointInitializer(const std::string& file) : infile(file){}
 
-std::vector<Point> FilePointInitializer::getInitialSolution(int sizeOfInitialSolution)
+std::vector<Point> FilePointInitializer::getInitialPoints(int sizeOfInitialSolution)
 {
     double x, y;
     std::vector<Point> initialSolution;

@@ -9,7 +9,7 @@ class RandomPointInitializer : public PointInitializer
 {
 public:
 	RandomPointInitializer(int, int);
-	std::vector<Point> getInitialSolution(int) override;
+	std::vector<Point> getInitialPoints(int) override;
 
 private:
     std::mt19937 rng {};
