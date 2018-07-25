@@ -94,8 +94,8 @@ void Population::updatePopulation()
 {
 	std::vector<Path> newPopulation;
 	newPopulation.reserve(sizeOfSolution);
-	auto percentageOfChildenFromPreviousGeneration = 0.9;
-	int numberOfChildrenFromParents = int (sizeOfPopulation * percentageOfChildenFromPreviousGeneration)/2;
+	auto percentageOfChildrenFromPreviousGeneration = 0.9;
+	int numberOfChildrenFromParents = int (sizeOfPopulation * percentageOfChildrenFromPreviousGeneration)/2;
 
 	for (auto i = 0; i < numberOfChildrenFromParents; ++i)
 	{
@@ -124,7 +124,12 @@ void Population::checkForBetterSolution()
     }
 }
 
-Path Population::getBestSolution()
+std::vector<Point> Population::getBestSolutionPath()
 {
-    return *bestSolution;
+	return bestSolution->getPath();
+}
+
+double Population::getBestSolutionFitness()
+{
+	return bestSolution->getFitness();
 }

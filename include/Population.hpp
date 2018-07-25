@@ -13,7 +13,8 @@ public:
     void mutation();
     void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path>&, int);
     void updatePopulation();
-    Path getBestSolution();
+    std::vector<Point> getBestSolutionPath();
+    double getBestSolutionFitness();
     Path getBestSolutionInCurrentPopulation();
     void runAlgorithm(int);
 
@@ -21,10 +22,10 @@ private:
     void createAllInitialSolutions();
     void checkForBetterSolution();
 
-    std::vector<Path> population;
-    int sizeOfPopulation;
-    int sizeOfSolution;
-    double mutationRate;
-    std::shared_ptr<PointInitializer> initializer;
+    std::vector<Path> population {};
+    int sizeOfPopulation {};
+    int sizeOfSolution {};
+    double mutationRate {};
+    std::shared_ptr<PointInitializer> initializer {};
     std::optional<Path> bestSolution {};
 };

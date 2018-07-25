@@ -16,8 +16,8 @@ int main()
     Population population(sizeOfPopulation, numberOfPoints, mutationRate, initializer);
     population.runAlgorithm(numberOfIteration);
 
-    auto result = population.getBestSolution().getPath();
-    std::cout << "FOUND FITNESS " << population.getBestSolution().getFitness() << std::endl;
+    auto result = population.getBestSolutionPath();
+    std::cout << "FOUND FITNESS " << population.getBestSolutionFitness() << std::endl;
 
     for (auto elem : result)
     {
