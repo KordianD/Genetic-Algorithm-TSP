@@ -17,7 +17,7 @@ double Path::getFitness() const
 	return fitness;
 }
 
-std::vector<Point> Path::getPath()
+std::vector<Point> Path::getPath() const
 {
 	return path;
 }
@@ -27,7 +27,7 @@ void Path::mutate(int lowerBound, int upperBound)
 	std::swap(path[lowerBound], path[upperBound]);
 }
 
-std::vector<Point> Path::crossover(const Path& parent)
+std::vector<Point> Path::crossover(const Path& parent) const
 {
 	std::vector<Point> child;
 	child.reserve(path.size());

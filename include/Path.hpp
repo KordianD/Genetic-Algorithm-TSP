@@ -1,10 +1,9 @@
 #pragma once
 
 #include "Point.hpp"
+#include "PointInitializer.hpp"
 #include <vector>
 #include <memory>
-#include "PointInitializer.hpp"
-
 
 class Path
 {
@@ -12,9 +11,9 @@ public:
     explicit Path(std::vector<Point>);
     double getFitness() const;
     double calculateFitness() const;
-    std::vector<Point> getPath();
+    std::vector<Point> getPath() const;
     void mutate(int, int);
-    std::vector<Point> crossover(const Path& parent);
+    std::vector<Point> crossover(const Path& parent) const;
 
 private:
     std::vector<Point> path;
