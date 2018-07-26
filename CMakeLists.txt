@@ -36,7 +36,7 @@ add_executable(TSP_FINAL Genetic_TSP.cpp ${TSP_SRC})
 target_link_libraries( TSP_FINAL ${OpenCV_LIBS} )
 
 #Define your executable
-add_executable(EXECUTABLE_NAME ${TSP_SRC} ${TSP_TESTS} include/Plotter.hpp)
+add_executable(EXECUTABLE_NAME ${TSP_SRC} ${TSP_TESTS})
 
 #Link with GoogleTest
 target_link_libraries(EXECUTABLE_NAME gtest gtest_main)

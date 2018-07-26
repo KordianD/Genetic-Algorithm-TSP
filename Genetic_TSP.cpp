@@ -12,7 +12,7 @@ int main()
     auto imageHeight = 1000;
     auto numberOfPoints = 50;
     auto sizeOfPopulation = 500;
-    auto numberOfIteration = 1000;
+    auto numberOfIteration = 100;
     auto mutationRate = 0.05;
 
     std::shared_ptr<PointInitializer> initializer = std::make_shared<RandomPointInitializer>(imageHeight, imageWidth);

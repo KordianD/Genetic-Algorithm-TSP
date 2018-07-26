@@ -1,7 +1,6 @@
 #include "Population.hpp"
 #include <algorithm>
 #include <iterator>
-#include <iostream>
 
 Population::Population(int sizeOfPopulation, int sizeOfSolution, double mutationRate, std::shared_ptr<PointInitializer> initializer) :
         sizeOfPopulation(sizeOfPopulation),
