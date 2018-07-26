@@ -54,7 +54,7 @@ double Path::calculateFitness() const
 
     for (size_t i = 0; i < path.size()-1; ++i)
     {
-        sum += pow(path[i].x - path[i+1].x, 2.0) + pow(path[i].y - path[i+1].y, 2.0);
+        sum += sqrt(pow(path[i].x - path[i+1].x, 2.0) + pow(path[i].y - path[i+1].y, 2.0));
     }
 
     return sum;
