@@ -10,10 +10,10 @@ class Plotter
 {
 public:
     Plotter(int, int);
-    void drawPoints(const std::vector<Point>& points);
+    void drawPoints(const std::vector<Point> &points);
 
 private:
-    cv::Mat image {cv::Mat::zeros(400, 400, CV_8UC3)};
-    const int imageWidth {};
-    const int imageHeight {};
+    cv::Mat image{cv::Mat::zeros(400, 400, CV_8UC3)};
+    const int imageWidth{};
+    const int imageHeight{};
 };

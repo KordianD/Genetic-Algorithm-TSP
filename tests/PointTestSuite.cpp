@@ -3,24 +3,24 @@
 
 namespace
 {
-  constexpr int X_COORDINATE {5};
-  constexpr int Y_COORDINATE {100};
+    constexpr int X_COORDINATE{5};
+    constexpr int Y_COORDINATE{100};
 }
 
 using namespace ::testing;
 
 TEST(PointTestSuite, ShouldReturnTrueWhenComparingTheSamePoints)
 {
-  Point first(X_COORDINATE, Y_COORDINATE);
-  Point second(X_COORDINATE, Y_COORDINATE);
+    Point first(X_COORDINATE, Y_COORDINATE);
+    Point second(X_COORDINATE, Y_COORDINATE);
 
-  EXPECT_TRUE(first == second);
+    EXPECT_TRUE(first == second);
 }
 
 TEST(PointTestSuite, ShouldReturnFalseWhenComparingDifferentPoints)
 {
-  Point first(X_COORDINATE, Y_COORDINATE);
-  Point second;
+    Point first(X_COORDINATE, Y_COORDINATE);
+    Point second;
 
-  EXPECT_FALSE(first == second);
+    EXPECT_FALSE(first == second);
 }

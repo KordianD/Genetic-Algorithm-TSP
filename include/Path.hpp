@@ -13,9 +13,9 @@ public:
     double calculateFitness() const;
     std::vector<Point> getPath() const;
     void mutate(int, int);
-    std::vector<Point> crossover(const Path& parent) const;
+    std::vector<Point> crossover(const Path &parent) const;
 
 private:
     std::vector<Point> path;
-    double fitness {};
+    double fitness{};
 };

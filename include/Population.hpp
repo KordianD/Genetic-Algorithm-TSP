@@ -8,11 +8,11 @@
 class Population
 {
 public:
-    Population(const GeneticAlgorithmParameters&, std::shared_ptr<PointInitializer>);
+    Population(const GeneticAlgorithmParameters &, std::shared_ptr<PointInitializer>);
     int getRandomNumberInRange(int, int);
     Path performTournamentSelection();
     void mutation();
-    void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path>&, int);
+    void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path> &, int);
     void updatePopulation();
     std::vector<Point> getBestSolutionPath();
     double getBestSolutionFitness();
@@ -21,10 +21,11 @@ public:
 
 private:
     void createAllInitialSolutions();
+
     void checkForBetterSolution();
 
-    std::vector<Path> population {};
+    std::vector<Path> population{};
     GeneticAlgorithmParameters geneticAlgorithmParameters{};
-    std::shared_ptr<PointInitializer> initializer {};
-    std::optional<Path> bestSolution {};
+    std::shared_ptr<PointInitializer> initializer{};
+    std::optional<Path> bestSolution{};
 };

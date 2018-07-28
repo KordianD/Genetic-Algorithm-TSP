@@ -7,9 +7,10 @@
 class FilePointInitializer : public PointInitializer
 {
 public:
-    FilePointInitializer(const std::string&);
+    FilePointInitializer(const std::string &);
+
     std::vector<Point> getInitialPoints(int) override;
 
 private:
-    std::ifstream infile {};
+    std::ifstream infile{};
 };

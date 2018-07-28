@@ -2,7 +2,8 @@
 #include <iostream>
 
 
-FilePointInitializer::FilePointInitializer(const std::string& file) : infile(file){}
+FilePointInitializer::FilePointInitializer(const std::string &file) : infile(file)
+{}
 
 std::vector<Point> FilePointInitializer::getInitialPoints(int sizeOfInitialSolution)
 {
