@@ -1,10 +1,17 @@
 #include <iostream>
 #include "Parser.hpp"
 
-Parser::Parser(std::vector<std::string> && arguments) : arguments(std::move(arguments))
+Parser::Parser(std::vector<std::string> arguments) : arguments(std::move(arguments)) {}
+
+void Parser::validateInput() {}
+
+void Parser::printHelpOptions()
 {
-    for (auto elem : arguments)
-    {
-        std::cout << elem << " ";
-    }
+
+}
+
+bool Parser::isHelpCommandActive()
+{
+
+
 }
