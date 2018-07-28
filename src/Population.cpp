@@ -29,9 +29,9 @@ Path Population::getBestSolutionInCurrentPopulation()
 
 }
 
-void Population::runAlgorithm(int numberOfIterations)
+void Population::runAlgorithm()
 {
-    for (auto i = 0; i < numberOfIterations; ++i)
+    for (auto i = 0; i < geneticAlgorithmParameters.numberOfIterations; ++i)
     {
         updatePopulation();
     }

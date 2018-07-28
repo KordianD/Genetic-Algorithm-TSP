@@ -17,7 +17,7 @@ public:
     std::vector<Point> getBestSolutionPath();
     double getBestSolutionFitness();
     Path getBestSolutionInCurrentPopulation();
-    void runAlgorithm(int);
+    void runAlgorithm();
 
 private:
     void createAllInitialSolutions();

@@ -1,18 +1,17 @@
 #include <gtest/gtest.h>
 #include "Population.hpp"
-//#include <memory>
 #include "PointInitializerMock.hpp"
-//#include "GeneticAlgorithmParameters.hpp"
-//#include <stdexcept>
+
 
 namespace
 {
     constexpr int NUMBER_OF_POINTS{100};
     constexpr int SIZE_OF_POPULATION{50};
     constexpr int ZERO_SIZE_OF_POPULATION{0};
+    constexpr int NUMBER_OF_INTERATIONS {1000};
     constexpr double MUTATION_RATE{0.05};
-    constexpr GeneticAlgorithmParameters PARAMETERS{NUMBER_OF_POINTS, SIZE_OF_POPULATION, MUTATION_RATE};
-    constexpr GeneticAlgorithmParameters INVALID_PARAMETERS{NUMBER_OF_POINTS, ZERO_SIZE_OF_POPULATION, MUTATION_RATE};
+    constexpr GeneticAlgorithmParameters PARAMETERS{NUMBER_OF_POINTS, SIZE_OF_POPULATION, NUMBER_OF_INTERATIONS, MUTATION_RATE};
+    constexpr GeneticAlgorithmParameters INVALID_PARAMETERS{NUMBER_OF_POINTS, ZERO_SIZE_OF_POPULATION, NUMBER_OF_INTERATIONS, MUTATION_RATE};
     constexpr int LOWER_BOUND{20};
     constexpr int UPPER_BOUND{77};
     const std::vector<Point> EMPTY_INITIAL_SOLUTION{};

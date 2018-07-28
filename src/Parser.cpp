@@ -2,8 +2,8 @@
 #include "Parser.hpp"
 #include <algorithm>
 
-Parser::Parser(std::vector<std::string> arguments) : 
-                                                                                     arguments(std::move(arguments))
+Parser::Parser(std::vector<std::string> arguments) :
+        arguments(std::move(arguments))
 {}
 
 void Parser::validateInput()
@@ -11,14 +11,21 @@ void Parser::validateInput()
     if (isHelpCommandActive())
     {
         printHelpOptions();
+        return;
     }
+
+
+
 }
 
 void Parser::printHelpOptions()
 {
-    std::cout << "Travel Salesman Problem solved by Genetic Algorithm" << "[options]" << std::endl <<
+    std::cout << "Travelling Salesman Problem solved by Genetic Algorithm " << std::endl <<
               "Options:" << std::endl <<
-              "-h | --help        Print this help" << std::endl;
+              "-h | --help        Print this help" << std::endl <<
+              "--sizeOfPopulation=<int>    Pass size of population" << std::endl <<
+              "--mutationRate=<double>     Pass mutation rate" <<  std::endl;
+
 }
 
 bool Parser::isHelpCommandActive()
