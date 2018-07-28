@@ -4,10 +4,11 @@
 namespace
 {
   constexpr int ZERO_FITNESS {0};
-  constexpr double FITNESS {96};
+  constexpr double FITNESS {4};
   constexpr int FIRST_INDEX_TO_MUTATE {1};
   constexpr int SECOND_INDEX_TO_MUTATE {2};
   const std::vector<Point> EMPTY_PATH {};
+  const std::vector<Point> SIMPLE_PATH {{1,1}, {2,1}, {2,0}, {1,0}, {1,1}};
   const std::vector<Point> PATH {{1,2}, {3,4}, {5,6}, {7,8}, {1,2}};
   const std::vector<Point> MUTATE_PATH {{5,6}, {1,2}, {3,4}, {7,8}, {5,6}};
   const std::vector<Point> THE_SAME_PATH {{5,5}, {5,5}};
@@ -32,7 +33,7 @@ TEST(PathTestSuite, ShouldReturnZeroFitnessWhenThereAreTheseSamePoints)
 
 TEST(PathTestSuite, ShouldReturnCorrectValueWhenCorrectDataPassed)
 {
-  Path sut(PATH);
+  Path sut(SIMPLE_PATH);
 
   EXPECT_EQ(sut.getFitness(), FITNESS);
   EXPECT_EQ(sut.calculateFitness(), FITNESS);
