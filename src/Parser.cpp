@@ -14,8 +14,7 @@ void Parser::validateInput()
         return;
     }
 
-
-
+    
 }
 
 void Parser::printHelpOptions()
@@ -24,7 +23,8 @@ void Parser::printHelpOptions()
               "Options:" << std::endl <<
               "-h | --help        Print this help" << std::endl <<
               "--sizeOfPopulation=<int>    Pass size of population" << std::endl <<
-              "--mutationRate=<double>     Pass mutation rate" <<  std::endl;
+              "--mutationRate=<double>     Pass mutation rate" << std::endl <<
+              "--numberOfIteration=<int>   Pass number of iterations" << std::endl;
 
 }
 

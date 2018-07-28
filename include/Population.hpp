@@ -21,7 +21,6 @@ public:
 
 private:
     void createAllInitialSolutions();
-
     void checkForBetterSolution();
 
     std::vector<Path> population{};
