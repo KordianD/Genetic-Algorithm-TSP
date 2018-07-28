@@ -2,18 +2,16 @@
 #include <algorithm>
 #include <iterator>
 
-Population::Population(int sizeOfPopulation, int sizeOfSolution, double mutationRate, std::shared_ptr<PointInitializer> initializer) :
-        sizeOfPopulation(sizeOfPopulation),
-        sizeOfSolution(sizeOfSolution),
-		mutationRate(mutationRate),
+Population::Population(const GeneticAlgorithmParameters& geneticAlgorithmParameters, std::shared_ptr<PointInitializer> initializer) :
+        geneticAlgorithmParameters(geneticAlgorithmParameters),
         initializer(std::move(initializer))
 {
-	if (sizeOfPopulation <= 0)
+	if (geneticAlgorithmParameters.sizeOfPopulation <= 0)
 	{
 		throw std::invalid_argument("sizeOfPopulation must be greater than 0");
 	}
 
-	population.reserve(sizeOfPopulation);
+	population.reserve(geneticAlgorithmParameters.sizeOfPopulation);
 	createAllInitialSolutions();
 	bestSolution = getBestSolutionInCurrentPopulation();
 
@@ -40,9 +38,9 @@ void Population::runAlgorithm(int numberOfIterations)
 void Population::createAllInitialSolutions()
 {
 	auto rng = std::default_random_engine {};
-	std::vector<Point> initialSolution = initializer->getInitialPoints(sizeOfSolution);
+	std::vector<Point> initialSolution = initializer->getInitialPoints(geneticAlgorithmParameters.numberOfPoints);
 
-	for (auto i = 0; i < sizeOfPopulation; ++i) {
+	for (auto i = 0; i < geneticAlgorithmParameters.sizeOfPopulation; ++i) {
         std::shuffle(std::begin(initialSolution), std::end(initialSolution), rng);
         std::vector<Point> temp(initialSolution);
         temp.emplace_back(temp[0]);
@@ -82,9 +80,9 @@ void Population::mutation()
 {
 	for (auto& elem : population)
 	{
-	    if (getRandomNumberInRange(0, 1) < mutationRate)
+	    if (getRandomNumberInRange(0, 1) < geneticAlgorithmParameters.mutationRate)
 	    {
-            elem.mutate(getRandomNumberInRange(1, sizeOfSolution - 1), getRandomNumberInRange(1, sizeOfSolution - 1));
+            elem.mutate(getRandomNumberInRange(1, geneticAlgorithmParameters.numberOfPoints - 1), getRandomNumberInRange(1, geneticAlgorithmParameters.numberOfPoints - 1));
         }
 	}
 }
@@ -92,9 +90,9 @@ void Population::mutation()
 void Population::updatePopulation()
 {
 	std::vector<Path> newPopulation;
-	newPopulation.reserve(sizeOfSolution);
+	newPopulation.reserve(geneticAlgorithmParameters.numberOfPoints);
 	auto percentageOfChildrenFromPreviousGeneration = 0.9;
-	int numberOfChildrenFromParents = int (sizeOfPopulation * percentageOfChildrenFromPreviousGeneration)/2;
+	int numberOfChildrenFromParents = int (geneticAlgorithmParameters.sizeOfPopulation * percentageOfChildrenFromPreviousGeneration)/2;
 
 	for (auto i = 0; i < numberOfChildrenFromParents; ++i)
 	{
@@ -105,7 +103,7 @@ void Population::updatePopulation()
 		newPopulation.emplace_back(secondParent.crossover(firstParent));
 	}
 
-	addBestPathsFromPreviousPopulationToNextPopulation(newPopulation, sizeOfPopulation - numberOfChildrenFromParents*2);
+	addBestPathsFromPreviousPopulationToNextPopulation(newPopulation, geneticAlgorithmParameters.sizeOfPopulation - numberOfChildrenFromParents*2);
 
 	population = newPopulation;
 

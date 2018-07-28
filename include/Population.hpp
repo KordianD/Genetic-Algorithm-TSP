@@ -3,11 +3,12 @@
 #include <optional>
 #include <random>
 #include "Path.hpp"
+#include "GeneticAlgorithmParameters.hpp"
 
 class Population
 {
 public:
-    Population(int, int, double, std::shared_ptr<PointInitializer>);
+    Population(const GeneticAlgorithmParameters&, std::shared_ptr<PointInitializer>);
     int getRandomNumberInRange(int, int);
     Path performTournamentSelection();
     void mutation();
@@ -23,9 +24,7 @@ private:
     void checkForBetterSolution();
 
     std::vector<Path> population {};
-    int sizeOfPopulation {};
-    int sizeOfSolution {};
-    double mutationRate {};
+    GeneticAlgorithmParameters geneticAlgorithmParameters{};
     std::shared_ptr<PointInitializer> initializer {};
     std::optional<Path> bestSolution {};
 };

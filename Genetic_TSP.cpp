@@ -4,21 +4,20 @@
 #include <algorithm>
 #include <Plotter.hpp>
 #include <RandomPointInitializer.hpp>
+#include "GeneticAlgorithmParameters.hpp"
 
 
-int main()
+int main(int argc,  char* argv[])
 {
+    GeneticAlgorithmParameters geneticAlgorithmParameters{50, 500, 0.05};
     auto imageWidth = 1700;
     auto imageHeight = 1000;
-    auto numberOfPoints = 50;
-    auto sizeOfPopulation = 500;
     auto numberOfIteration = 100;
-    auto mutationRate = 0.05;
 
     std::shared_ptr<PointInitializer> initializer = std::make_shared<RandomPointInitializer>(imageHeight, imageWidth);
     //std::shared_ptr<PointInitializer> initializer = std::make_shared<FilePointInitializer>("../tests/test.txt");
 
-    Population population(sizeOfPopulation, numberOfPoints, mutationRate, initializer);
+    Population population(geneticAlgorithmParameters, initializer);
     population.runAlgorithm(numberOfIteration);
 
     auto result = population.getBestSolutionPath();
