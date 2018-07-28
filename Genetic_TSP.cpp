@@ -10,7 +10,8 @@
 
 int main(int argc,  char* argv[])
 {
-    Parser parser(std::string(argv[0], std::vector<std::string>(argv, argv + argc));
+
+    Parser parser(std::vector<std::string>(argv+1, argv + argc));
 
     GeneticAlgorithmParameters geneticAlgorithmParameters{50, 500, 0.05};
     auto imageWidth = 1700;

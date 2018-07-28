@@ -2,22 +2,23 @@
 #include "Parser.hpp"
 #include <algorithm>
 
-Parser::Parser(const std::string &programName, std::vector<std::string> arguments) : programName(programName),
+Parser::Parser(std::vector<std::string> arguments) : 
                                                                                      arguments(std::move(arguments))
 {}
 
 void Parser::validateInput()
-{}
+{
+    if (isHelpCommandActive())
+    {
+        printHelpOptions();
+    }
+}
 
 void Parser::printHelpOptions()
 {
-    std::cout << programName << "[options]" << std::endl <<
+    std::cout << "Travel Salesman Problem solved by Genetic Algorithm" << "[options]" << std::endl <<
               "Options:" << std::endl <<
-              "-h | --help        Print this help" << std::endl <<
-              "-v | --version     Print the SVN version" << std::endl <<
-              "-V | --Version     Print the proxy version" << std::endl <<
-              "-d | --daemonize   Run as daemon" << std::endl <<
-              "-P | --pidfile     Path to PID file (default: " << std::endl;
+              "-h | --help        Print this help" << std::endl;
 }
 
 bool Parser::isHelpCommandActive()
