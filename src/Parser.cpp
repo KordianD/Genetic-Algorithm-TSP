@@ -6,15 +6,15 @@ Parser::Parser(std::vector<std::string> arguments) :
         arguments(std::move(arguments))
 {}
 
-void Parser::validateInput()
+std::optional<GeneticAlgorithmParameters> Parser::validateInput()
 {
     if (isHelpCommandActive())
     {
         printHelpOptions();
-        return;
+        return {};
     }
 
-
+    return GeneticAlgorithmParameters{50, 500, 1000, 0.05};
 }
 
 void Parser::printHelpOptions()

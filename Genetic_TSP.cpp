@@ -12,9 +12,13 @@ int main(int argc,  char* argv[])
 {
 
     Parser parser(std::vector<std::string>(argv+1, argv + argc));
-    parser.validateInput();
+    auto parserAlgorithmParameters = parser.validateInput();
+    if(not parserAlgorithmParameters.has_value())
+    {
+        return(0);
+    }
 
-    GeneticAlgorithmParameters geneticAlgorithmParameters{50, 500, 1000, 0.05};
+    GeneticAlgorithmParameters geneticAlgorithmParameters = *parserAlgorithmParameters;
     auto imageWidth = 1700;
     auto imageHeight = 1000;
 
