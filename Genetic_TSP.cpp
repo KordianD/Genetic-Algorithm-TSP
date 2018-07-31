@@ -25,11 +25,11 @@ int main(int argc,  char* argv[])
     population.runAlgorithm();
 
     auto result = population.getBestSolutionPath();
-    std::cout << "FOUND FITNESS " << population.getBestSolutionFitness() << std::endl;
+    std::cout << "FOUND FITNESS " << population.getBestSolutionFitness() << '\n';
 
     for (const auto& elem : result)
     {
-        std::cout << elem.x << " " << elem.y << std::endl;
+        std::cout << elem.x << " " << elem.y << '\n';
     }
 
     Plotter plotter(imageHeight, imageWidth);

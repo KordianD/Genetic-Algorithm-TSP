@@ -14,17 +14,17 @@ void Parser::validateInput()
         return;
     }
 
-    
+
 }
 
 void Parser::printHelpOptions()
 {
-    std::cout << "Travelling Salesman Problem solved by Genetic Algorithm " << std::endl <<
-              "Options:" << std::endl <<
-              "-h | --help        Print this help" << std::endl <<
-              "--sizeOfPopulation=<int>    Pass size of population" << std::endl <<
-              "--mutationRate=<double>     Pass mutation rate" << std::endl <<
-              "--numberOfIteration=<int>   Pass number of iterations" << std::endl;
+    std::cout << "Travelling Salesman Problem solved by Genetic Algorithm " << '\n' <<
+              "Options:" << '\n' <<
+              "-h | --help        Print this help" << '\n' <<
+              "--sizeOfPopulation=<int>    Pass size of population" << '\n' <<
+              "--mutationRate=<double>     Pass mutation rate" << '\n' <<
+              "--numberOfIteration=<int>   Pass number of iterations" << '\n';
 
 }
 
