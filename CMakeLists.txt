@@ -24,17 +24,17 @@ file(GLOB TSP_TESTS
         "tests/*.cpp"
         )
 
-add_executable(TSP_FINAL Genetic_TSP.cpp ${TSP_SRC})
+add_executable(tsp Genetic_TSP.cpp ${TSP_SRC})
 
-set_target_properties(TSP_FINAL
+set_target_properties(tsp
         PROPERTIES COMPILE_FLAGS ${GCC_COVERAGE_COMPILE_FLAGS})
 
-target_link_libraries(TSP_FINAL ${OpenCV_LIBS} )
+target_link_libraries(tsp ${OpenCV_LIBS} )
 
-add_executable(EXECUTABLE_NAME ${TSP_SRC} ${TSP_TESTS})
+add_executable(unit_tests_exe ${TSP_SRC} ${TSP_TESTS})
 
-target_link_libraries(EXECUTABLE_NAME gtest gtest_main)
+target_link_libraries(unit_tests_exe gtest gtest_main)
 
-target_link_libraries(EXECUTABLE_NAME gmock gmock_main)
+target_link_libraries(unit_tests_exe gmock gmock_main)
 
-target_link_libraries(EXECUTABLE_NAME ${OpenCV_LIBS} )
+target_link_libraries(unit_tests_exe ${OpenCV_LIBS} )
