@@ -1,7 +1,10 @@
 # Genetic-Algorithm-TSP
 Travelling Salesman Problem - using genetic algorithm
 
-# Setup
+# Prerequisites
+OpenCV (>=3.2)
+
+# If you want to develop code and use GoogleTest and GoogleMock
 1) Clone or download
 2) Go to downloaded folder
 3) Create directory named "lib"
