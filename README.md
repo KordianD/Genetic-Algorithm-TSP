@@ -10,3 +10,12 @@ OpenCV (>=3.2)
 3) Create directory named "lib"
 4) Go to directory lib
 5) Download https://github.com/google/googletest
+
+# Usage
+
+Run `tsp --help` for help on command line options. Available command line arguments:
+```
+--sizeOfPopulation=<int>    #Pass size of population
+--mutationRate=<double>     #Pass mutation rate
+--numberOfIteration=<int>   #Pass number of iterations
+```
