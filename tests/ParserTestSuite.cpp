@@ -3,7 +3,7 @@
 
 namespace
 {
-    const std::vector<std::string> ARGUMENTS_WITH_HELP{"--RANDOM", "ran", "--help"};
+    const std::vector<std::string> ARGUMENTS_WITH_HELP{"--help"};
     const std::vector<std::string> ARGUMENTS_WITHOUT_HELP{"--RANDOM", "ran", "help"};
 }
 
@@ -14,14 +14,14 @@ TEST(ParserTestSuite, ShouldReturnTrueWhenHelpFlagWasPassed)
 {
     Parser sut(ARGUMENTS_WITH_HELP);
 
-    EXPECT_TRUE(sut.isHelpCommandActive());
+    EXPECT_TRUE(sut.isCommandPassed("--help"));
 }
 
 TEST(ParserTestSuite, ShouldReturnFalseWhenHelpFlagWasNotPassed)
 {
     Parser sut(ARGUMENTS_WITHOUT_HELP);
 
-    EXPECT_FALSE(sut.isHelpCommandActive());
+    EXPECT_FALSE(sut.isCommandPassed("--help"));
 }
 
 TEST(ParserTestSUite, ShouldReturnEmptyOptionalWhenHelpFlagWasPassed)
