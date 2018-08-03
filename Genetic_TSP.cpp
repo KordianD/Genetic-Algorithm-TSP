@@ -36,7 +36,7 @@ int main(int argc,  char* argv[])
 
 void start(std::shared_ptr<PointInitializer> pointInitializer, const GeneticAlgorithmParameters& geneticAlgorithmParameters, int imageHeight, int imageWidth)
 {
-    Population population(geneticAlgorithmParameters, pointInitializer);
+    Population population(geneticAlgorithmParameters, std::move(pointInitializer));
 
     population.runAlgorithm();
 
