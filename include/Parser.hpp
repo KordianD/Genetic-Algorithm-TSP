@@ -9,16 +9,19 @@
 class Parser
 {
 public:
-    Parser(std::vector<std::string>);
+    explicit Parser(std::vector<std::string>);
     void printHelpOptions();
     bool isCommandPassed(std::string_view);
+    bool isRandomModeEnabled();
     std::optional<GeneticAlgorithmParameters> validateInput();
-    double getValueFromPassedCommand(std::string_view command);
+    std::string getValueFromPassedCommand(std::string_view command);
+    std::string getPassedFilePath();
 
 private:
     void setSizeOfPopulationParameterFromInput();
     void setMutationRateParameterFromInput();
     void setNumberOfIterationsParameterFromInput();
+    void setNumberOfPointsFromInput();
 
     GeneticAlgorithmParameters geneticAlgorithmParameters{};
     std::vector<std::string> arguments{};

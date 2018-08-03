@@ -1,43 +1,47 @@
-#include <FilePointInitializer.hpp>
 #include "Population.hpp"
-#include <iostream>
 #include <algorithm>
 #include <Plotter.hpp>
-#include <RandomPointInitializer.hpp>
 #include <Parser.hpp>
+#include <RandomPointInitializer.hpp>
+#include <FilePointInitializer.hpp>
 #include "GeneticAlgorithmParameters.hpp"
 
+void start(std::shared_ptr<PointInitializer>, const GeneticAlgorithmParameters&, int, int);
 
 int main(int argc,  char* argv[])
 {
 
     Parser parser(std::vector<std::string>(argv+1, argv + argc));
     auto parserAlgorithmParameters = parser.validateInput();
+
+    auto imageWidth = 1700;
+    auto imageHeight = 1000;
+
     if(not parserAlgorithmParameters.has_value())
     {
         return(0);
     }
 
-    GeneticAlgorithmParameters geneticAlgorithmParameters = *parserAlgorithmParameters;
-    auto imageWidth = 1700;
-    auto imageHeight = 1000;
+    if (parser.isRandomModeEnabled())
+    {
+        start(std::make_shared<RandomPointInitializer>(imageHeight, imageWidth), *parserAlgorithmParameters, imageHeight, imageWidth);
+    }
+    else
+    {
+        start(std::make_shared<FilePointInitializer>(parser.getPassedFilePath()), *parserAlgorithmParameters, imageHeight, imageWidth);
+    }
 
-    std::shared_ptr<PointInitializer> initializer = std::make_shared<RandomPointInitializer>(imageHeight, imageWidth);
-    //std::shared_ptr<PointInitializer> initializer = std::make_shared<FilePointInitializer>("../tests/test.txt");
+    return(0);
+}
 
-    Population population(geneticAlgorithmParameters, initializer);
+void start(std::shared_ptr<PointInitializer> pointInitializer, const GeneticAlgorithmParameters& geneticAlgorithmParameters, int imageHeight, int imageWidth)
+{
+    Population population(geneticAlgorithmParameters, pointInitializer);
+
     population.runAlgorithm();
 
     auto result = population.getBestSolutionPath();
-    std::cout << "FOUND FITNESS " << population.getBestSolutionFitness() << '\n';
-
-    for (const auto& elem : result)
-    {
-        std::cout << elem.x << " " << elem.y << '\n';
-    }
 
     Plotter plotter(imageHeight, imageWidth);
     plotter.drawPoints(result);
-
-    return(0);
 }

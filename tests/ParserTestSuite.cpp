@@ -14,7 +14,7 @@ TEST(ParserTestSuite, ShouldReturnTrueWhenHelpFlagWasPassed)
 {
     Parser sut(ARGUMENTS_WITH_HELP);
 
-    EXPECT_TRUE(sut.isCommandPassed("--help"));
+    EXPECT_TRUE(sut.isCommandPassed("help"));
 }
 
 TEST(ParserTestSuite, ShouldReturnFalseWhenHelpFlagWasNotPassed)
@@ -24,13 +24,14 @@ TEST(ParserTestSuite, ShouldReturnFalseWhenHelpFlagWasNotPassed)
     EXPECT_FALSE(sut.isCommandPassed("--help"));
 }
 
-TEST(ParserTestSUite, ShouldReturnEmptyOptionalWhenHelpFlagWasPassed)
+TEST(ParserTestSuite, ShouldReturnEmptyOptionalWhenHelpFlagWasPassed)
 {
     Parser sut(ARGUMENTS_WITH_HELP);
     auto validatedValue = sut.validateInput();
     
     EXPECT_FALSE(validatedValue.has_value());
 }
+
 
 
 

@@ -4,13 +4,13 @@
 
 Parser::Parser(std::vector<std::string> arguments) : arguments(std::move(arguments)) {}
 
-double Parser::getValueFromPassedCommand(std::string_view command)
+std::string Parser::getValueFromPassedCommand(std::string_view command)
 {
     for (const auto & elem : arguments)
     {
         if (elem.find(command) != std::string::npos)
         {
-            return std::stod(elem.substr(elem.find('=') + 1));
+            return elem.substr(elem.find('=') + 1);
         }
     }
 }
@@ -26,6 +26,7 @@ std::optional<GeneticAlgorithmParameters> Parser::validateInput()
     setSizeOfPopulationParameterFromInput();
     setMutationRateParameterFromInput();
     setNumberOfIterationsParameterFromInput();
+    setNumberOfPointsFromInput();
 
     return geneticAlgorithmParameters;
 }
@@ -34,7 +35,7 @@ void Parser::setSizeOfPopulationParameterFromInput()
 {
     if (isCommandPassed("sizeOfPopulation"))
     {
-        geneticAlgorithmParameters.sizeOfPopulation = int (getValueFromPassedCommand("sizeOfPopulation"));
+        geneticAlgorithmParameters.sizeOfPopulation = std::stoi(getValueFromPassedCommand("sizeOfPopulation"));
     }
 }
 
@@ -43,7 +44,7 @@ void Parser::setMutationRateParameterFromInput()
 {
     if (isCommandPassed("mutationRate"))
     {
-        geneticAlgorithmParameters.mutationRate = getValueFromPassedCommand("mutationRate");
+        geneticAlgorithmParameters.mutationRate = std::stod(getValueFromPassedCommand("mutationRate"));
     }
 }
 
@@ -52,18 +53,40 @@ void Parser::setNumberOfIterationsParameterFromInput()
 {
     if (isCommandPassed("numberOfIterations"))
     {
-        geneticAlgorithmParameters.numberOfIterations = int (getValueFromPassedCommand("numberOfIterations"));
+        geneticAlgorithmParameters.numberOfIterations = std::stoi(getValueFromPassedCommand("numberOfIterations"));
     }
 
 }
 
+
+void Parser::setNumberOfPointsFromInput()
+{
+    if (isCommandPassed("numberOfPoints"))
+    {
+        geneticAlgorithmParameters.numberOfPoints = std::stoi(getValueFromPassedCommand("numberOfPoints"));
+    }
+}
+
+bool Parser::isRandomModeEnabled()
+{
+    return isCommandPassed("random");
+}
+
 bool Parser::isCommandPassed(std::string_view command)
 {
-    return std::find_if(std::begin(arguments), std::end(arguments), [command](const auto &option)
+    for (const auto & elem : arguments)
     {
-        return option == command;
+        if (elem.find(command) != std::string::npos)
+        {
+            return true;
+        }
+    }
+    return false;
+}
 
-    }) != std::end(arguments);
+std::string Parser::getPassedFilePath()
+{
+    return getValueFromPassedCommand("file");
 }
 
 void Parser::printHelpOptions()
@@ -73,6 +96,8 @@ void Parser::printHelpOptions()
               "--help           Print this help" << '\n' <<
               "--sizeOfPopulation=<int>    Pass size of population" << '\n' <<
               "--mutationRate=<double>     Pass mutation rate" << '\n' <<
-              "--numberOfIteration=<int>   Pass number of iterations" << '\n';
-
+              "--numberOfIteration=<int>   Pass number of iterations" << '\n' <<
+              "--random   Pass this flag to use randomly generated points" << '\n' <<
+              "--file=pathToFile  Pass path to file which will be used as points in algorithm" << '\n' <<
+              "--numberOfPoints=<int> Pass numberOfPoints which will be used from file or randomly generated";
 }
