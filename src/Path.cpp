@@ -33,7 +33,7 @@ std::vector<Point> Path::crossover(const Path &parent) const
     child.reserve(path.size());
     int halfOfSize = path.size() / 2;
 
-    std::copy(std::begin(path), std::begin(path) + halfOfSize, std::back_inserter(child));
+    std::copy_n(std::begin(path), halfOfSize, std::back_inserter(child));
 
     for (auto const &elem : parent.path)
     {
