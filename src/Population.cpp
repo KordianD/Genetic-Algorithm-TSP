@@ -66,7 +66,8 @@ Path Population::performTournamentSelection()
     auto firstRandomNumber = getRandomNumberInRange(0, population.size() - 1);
     auto secondRandomNumber = getRandomNumberInRange(0, population.size() - 1);
 
-    return std::min(population[firstRandomNumber], population[secondRandomNumber], [](const auto& lhs, const auto& rhs) {return lhs.getFitness() < rhs.getFitness();});
+    return std::min(population[firstRandomNumber], population[secondRandomNumber], [](const auto &lhs, const auto &rhs)
+    { return lhs.getFitness() < rhs.getFitness(); });
 }
 
 
@@ -77,8 +78,7 @@ void Population::addBestPathsFromPreviousPopulationToNextPopulation(std::vector<
     std::sort(std::begin(temp), std::end(temp), [](const auto &lhs, const auto &rhs)
     { return lhs.getFitness() > rhs.getFitness(); });
 
-    std::copy(std::begin(population), std::begin(population) + howManyPathFromOldPopulationToAdd,
-              std::back_inserter(newPopulation));
+    std::copy_n(std::begin(population), howManyPathFromOldPopulationToAdd, std::back_inserter(newPopulation));
 }
 
 void Population::mutation()

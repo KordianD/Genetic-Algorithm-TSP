@@ -2,11 +2,12 @@
 #include "Parser.hpp"
 #include <algorithm>
 
-Parser::Parser(std::vector<std::string> arguments) : arguments(std::move(arguments)) {}
+Parser::Parser(std::vector<std::string> arguments) : arguments(std::move(arguments))
+{}
 
 std::string Parser::getValueFromPassedCommand(std::string_view command) const
 {
-    for (const auto & elem : arguments)
+    for (const auto &elem : arguments)
     {
         if (elem.find(command) != std::string::npos)
         {
@@ -73,7 +74,8 @@ bool Parser::isRandomModeEnabled() const
 
 bool Parser::isCommandPassed(std::string_view command) const
 {
-    return std::any_of(std::begin(arguments), std::end(arguments), [command](const auto& elem) {return elem.find(command) != std::string::npos; });
+    return std::any_of(std::begin(arguments), std::end(arguments), [command](const auto &elem)
+    { return elem.find(command) != std::string::npos; });
 }
 
 std::string Parser::getPassedFilePath() const

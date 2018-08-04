@@ -28,7 +28,7 @@ TEST(ParserTestSuite, ShouldReturnEmptyOptionalWhenHelpFlagWasPassed)
 {
     Parser sut(ARGUMENTS_WITH_HELP);
     auto validatedValue = sut.validateInput();
-    
+
     EXPECT_FALSE(validatedValue.has_value());
 }
 
