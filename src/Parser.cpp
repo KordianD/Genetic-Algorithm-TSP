@@ -4,7 +4,7 @@
 
 Parser::Parser(std::vector<std::string> arguments) : arguments(std::move(arguments)) {}
 
-std::string Parser::getValueFromPassedCommand(std::string_view command)
+std::string Parser::getValueFromPassedCommand(std::string_view command) const
 {
     for (const auto & elem : arguments)
     {
@@ -67,12 +67,12 @@ void Parser::setNumberOfPointsFromInput()
     }
 }
 
-bool Parser::isRandomModeEnabled()
+bool Parser::isRandomModeEnabled() const
 {
     return isCommandPassed("random");
 }
 
-bool Parser::isCommandPassed(std::string_view command)
+bool Parser::isCommandPassed(std::string_view command) const
 {
     for (const auto & elem : arguments)
     {
@@ -84,12 +84,12 @@ bool Parser::isCommandPassed(std::string_view command)
     return false;
 }
 
-std::string Parser::getPassedFilePath()
+std::string Parser::getPassedFilePath() const
 {
     return getValueFromPassedCommand("file");
 }
 
-void Parser::printHelpOptions()
+void Parser::printHelpOptions() const
 {
     std::cout << "Travelling Salesman Problem solved by Genetic Algorithm " << '\n' <<
               "Options:" << '\n' <<

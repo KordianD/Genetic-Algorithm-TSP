@@ -5,7 +5,7 @@ Plotter::Plotter(int imageHeight, int imageWidth) : imageHeight(imageHeight), im
     image = cv::Mat::zeros(imageHeight, imageWidth, CV_8UC3);
 }
 
-void Plotter::drawPoints(const std::vector<Point> &points)
+void Plotter::drawPoints(const std::vector<Point> &points) const
 {
     for (size_t i = 0; i < points.size() - 1; ++i)
     {

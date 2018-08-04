@@ -12,11 +12,11 @@ public:
     int getRandomNumberInRange(int, int);
     Path performTournamentSelection();
     void mutation();
-    void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path> &, int);
+    void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path> &, int) const;
     void updatePopulation();
-    std::vector<Point> getBestSolutionPath();
-    double getBestSolutionFitness();
-    Path getBestSolutionInCurrentPopulation();
+    std::vector<Point> getBestSolutionPath() const;
+    double getBestSolutionFitness() const;
+    Path getBestSolutionInCurrentPopulation() const;
     void runAlgorithm();
 
 private:

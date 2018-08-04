@@ -10,12 +10,12 @@ class Parser
 {
 public:
     explicit Parser(std::vector<std::string>);
-    void printHelpOptions();
-    bool isCommandPassed(std::string_view);
-    bool isRandomModeEnabled();
+    void printHelpOptions() const;
+    bool isCommandPassed(std::string_view) const;
+    bool isRandomModeEnabled() const;
     std::optional<GeneticAlgorithmParameters> validateInput();
-    std::string getValueFromPassedCommand(std::string_view command);
-    std::string getPassedFilePath();
+    std::string getValueFromPassedCommand(std::string_view command) const;
+    std::string getPassedFilePath() const;
 
 private:
     void setSizeOfPopulationParameterFromInput();

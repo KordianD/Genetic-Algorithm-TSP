@@ -18,7 +18,7 @@ Population::Population(const GeneticAlgorithmParameters &geneticAlgorithmParamet
 
 }
 
-Path Population::getBestSolutionInCurrentPopulation()
+Path Population::getBestSolutionInCurrentPopulation() const
 {
     return *std::min_element(population.begin(),
                              population.end(),
@@ -72,7 +72,7 @@ Path Population::performTournamentSelection()
 
 
 void Population::addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path> &newPopulation,
-                                                                    int howManyPathFromOldPopulationToAdd)
+                                                                    int howManyPathFromOldPopulationToAdd) const
 {
     std::vector<Path> temp = population;
     std::sort(std::begin(temp), std::end(temp), [](const auto &lhs, const auto &rhs)
@@ -130,12 +130,12 @@ void Population::checkForBetterSolution()
     }
 }
 
-std::vector<Point> Population::getBestSolutionPath()
+std::vector<Point> Population::getBestSolutionPath() const
 {
     return bestSolution->getPath();
 }
 
-double Population::getBestSolutionFitness()
+double Population::getBestSolutionFitness() const
 {
     return bestSolution->getFitness();
 }
