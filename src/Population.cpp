@@ -66,8 +66,7 @@ Path Population::performTournamentSelection()
     auto firstRandomNumber = getRandomNumberInRange(0, population.size() - 1);
     auto secondRandomNumber = getRandomNumberInRange(0, population.size() - 1);
 
-    return population[firstRandomNumber].getFitness() < population[secondRandomNumber].getFitness()
-           ? population[firstRandomNumber] : population[secondRandomNumber];
+    return std::min(population[firstRandomNumber], population[secondRandomNumber], [](const auto& lhs, const auto& rhs) {return lhs.getFitness() < rhs.getFitness();});
 }
 
 
