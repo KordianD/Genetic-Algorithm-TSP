@@ -17,9 +17,9 @@ int main(int argc,  char* argv[])
     auto imageWidth = 1700;
     auto imageHeight = 1000;
 
-    if(not parserAlgorithmParameters.has_value())
+    if(not parserAlgorithmParameters)
     {
-        return(0);
+        return 0;
     }
 
     if (parser.isRandomModeEnabled())
