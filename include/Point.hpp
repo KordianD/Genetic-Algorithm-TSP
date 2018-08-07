@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_POINT_HPP
+#define TSP_FINAL_POINT_HPP
 
 struct Point
 {
@@ -15,3 +16,5 @@ struct Point
     double x = 0;
     double y = 0;
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_POPULATION_HPP
+#define TSP_FINAL_POPULATION_HPP
 
 #include <optional>
 #include <random>
@@ -33,3 +34,5 @@ private:
     std::vector<double> historyOfLearning{};
     int bestSolutionNumber{};
 };
+
+#endif

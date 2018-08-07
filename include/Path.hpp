@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_PATH_HPP
+#define TSP_FINAL_PATH_HPP
 
 #include "Point.hpp"
 #include "PointInitializer.hpp"
@@ -19,3 +20,5 @@ private:
     std::vector<Point> path;
     double fitness{};
 };
+
+#endif

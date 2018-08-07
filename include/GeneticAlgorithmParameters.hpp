@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef TSP_FINAL_GENETICALGORITHMPARAMETERS_HPP
+#define TSP_FINAL_GENETICALGORITHMPARAMETERS_HPP
 
 struct GeneticAlgorithmParameters
 {
@@ -8,3 +8,5 @@ struct GeneticAlgorithmParameters
     int numberOfIterations{1000};
     double mutationRate{0.05};
 };
+
+#endif

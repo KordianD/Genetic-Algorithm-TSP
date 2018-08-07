@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_FILEPOINTINITIALIZER_HPP
+#define TSP_FINAL_FILEPOINTINITIALIZER_HPP
 
 #include "PointInitializer.hpp"
 #include <string>
@@ -14,3 +15,5 @@ public:
 private:
     std::ifstream infile{};
 };
+
+#endif

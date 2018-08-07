@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_PLOTTER_HPP
+#define TSP_FINAL_PLOTTER_HPP
 
 #include <vector>
 #include "Point.hpp"
@@ -17,3 +18,5 @@ private:
     const int imageWidth{};
     const int imageHeight{};
 };
+
+#endif

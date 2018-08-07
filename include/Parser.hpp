@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_PARSER_HPP
+#define TSP_FINAL_PARSER_HPP
 
 #include <string>
 #include <vector>
@@ -25,3 +26,5 @@ private:
     GeneticAlgorithmParameters geneticAlgorithmParameters{};
     std::vector<std::string> arguments{};
 };
+
+#endif
