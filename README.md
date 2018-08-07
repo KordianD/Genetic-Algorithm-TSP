@@ -3,9 +3,7 @@ Travelling Salesman Problem - using genetic algorithm.
 
 
 # Prerequisites
-<li>OpenCV (>=3.2)
-<li>matplotlib-cpp (https://github.com/lava/matplotlib-cpp)
-<li>Python 2.7 with matplotlib and numpy
+OpenCV (>=3.2)
 
 # Usage
 
