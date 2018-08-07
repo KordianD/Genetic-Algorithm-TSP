@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TSP_FINAL_POINTINITIALIZERMOCK_HPP
+#define TSP_FINAL_POINTINITIALIZERMOCK_HPP
 
 #include "gmock/gmock.h"
 #include "PointInitializer.hpp"
@@ -11,3 +12,5 @@ public:
     MOCK_METHOD1(getInitialPoints, std::vector<Point>(int));
 
 };
+
+#endif
