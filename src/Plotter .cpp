@@ -1,6 +1,6 @@
 #include "Plotter.hpp"
 
-Plotter::Plotter(int imageHeight, int imageWidth) : imageHeight(imageHeight), imageWidth(imageWidth)
+Plotter::Plotter(int imageHeight, int imageWidth) : imageWidth(imageWidth), imageHeight(imageHeight)
 {
     image = cv::Mat::zeros(imageHeight, imageWidth, CV_8UC3);
 }
