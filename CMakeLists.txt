@@ -7,11 +7,15 @@ set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Weffc++ -Wextra -Wcast-align -Wcast-qual 
 
 find_package( OpenCV REQUIRED )
 include_directories( ${OpenCV_INCLUDE_DIRS} )
+find_package(PythonLibs 2.7)
+include_directories(${PYTHON_INCLUDE_DIRS})
+include_directories(/usr/lib/python2.7/site-packages/numpy/core/include)
 
 include_directories(include)
 enable_testing()
 
 add_subdirectory(lib/googletest)
+include_directories(lib/matplotlib-cpp)
 
 include_directories(lib/googletest/googletest/include)
 include_directories(lib/googletest/googlemock/include)
@@ -30,6 +34,8 @@ set_target_properties(tsp
         PROPERTIES COMPILE_FLAGS ${GCC_COVERAGE_COMPILE_FLAGS})
 
 target_link_libraries(tsp ${OpenCV_LIBS} )
+
+target_link_libraries(tsp ${PYTHON_LIBRARIES})
 
 add_executable(unit_tests_exe ${TSP_SRC} ${TSP_TESTS})
 

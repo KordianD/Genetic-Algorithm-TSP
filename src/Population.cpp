@@ -1,6 +1,8 @@
 #include "Population.hpp"
 #include <algorithm>
 #include <iterator>
+#include <Population.hpp>
+
 
 Population::Population(const GeneticAlgorithmParameters &geneticAlgorithmParameters,
                        std::shared_ptr<PointInitializer> initializer) :
@@ -13,9 +15,10 @@ Population::Population(const GeneticAlgorithmParameters &geneticAlgorithmParamet
     }
 
     population.reserve(geneticAlgorithmParameters.sizeOfPopulation);
+    historyOfLearning.reserve(geneticAlgorithmParameters.numberOfIterations);
     createAllInitialSolutions();
     bestSolution = getBestSolutionInCurrentPopulation();
-
+    saveActualScore(getBestSolutionFitness());
 }
 
 Path Population::getBestSolutionInCurrentPopulation() const
@@ -122,10 +125,11 @@ void Population::updatePopulation()
 void Population::checkForBetterSolution()
 {
     auto bestSolutionInCurrentPopulation = getBestSolutionInCurrentPopulation();
-
+    saveActualScore(bestSolutionInCurrentPopulation.getFitness());
     if (bestSolutionInCurrentPopulation.getFitness() < bestSolution->getFitness())
     {
         bestSolution = bestSolutionInCurrentPopulation;
+        bestSolutionNumber = historyOfLearning.size();
     }
 }
 
@@ -137,4 +141,19 @@ std::vector<Point> Population::getBestSolutionPath() const
 double Population::getBestSolutionFitness() const
 {
     return bestSolution->getFitness();
+}
+
+std::vector<double> Population::getHistoryOfLearning() const
+{
+    return historyOfLearning;
+}
+
+void Population::saveActualScore(double bestSolution)
+{
+    historyOfLearning.emplace_back(bestSolution);
+}
+
+int Population::getNumberOfBestSolution() const
+{
+    return bestSolutionNumber;
 }

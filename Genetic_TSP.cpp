@@ -1,6 +1,7 @@
 #include "Population.hpp"
 #include <algorithm>
 #include <Plotter.hpp>
+#include <Chart.hpp>
 #include <Parser.hpp>
 #include <RandomPointInitializer.hpp>
 #include <FilePointInitializer.hpp>
@@ -10,7 +11,6 @@ void start(std::shared_ptr<PointInitializer>, const GeneticAlgorithmParameters&,
 
 int main(int argc,  char* argv[])
 {
-
     Parser parser(std::vector<std::string>(argv+1, argv + argc));
     auto parserAlgorithmParameters = parser.validateInput();
 
@@ -41,7 +41,11 @@ void start(std::shared_ptr<PointInitializer> pointInitializer, const GeneticAlgo
     population.runAlgorithm();
 
     auto result = population.getBestSolutionPath();
-
+    auto history = population.getHistoryOfLearning();
+    auto fitness = population.getBestSolutionFitness();
+    auto iteration = population.getNumberOfBestSolution();
+    Chart chart(imageHeight, imageWidth);
+    chart.drawChart(history, iteration, fitness);
     Plotter plotter(imageHeight, imageWidth);
     plotter.drawPoints(result);
 }

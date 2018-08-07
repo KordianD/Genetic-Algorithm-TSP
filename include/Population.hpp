@@ -17,14 +17,19 @@ public:
     std::vector<Point> getBestSolutionPath() const;
     double getBestSolutionFitness() const;
     Path getBestSolutionInCurrentPopulation() const;
+    std::vector<double> getHistoryOfLearning() const;
+    int getNumberOfBestSolution() const;
     void runAlgorithm();
 
 private:
     void createAllInitialSolutions();
     void checkForBetterSolution();
+    void saveActualScore(double);
 
     std::vector<Path> population{};
     GeneticAlgorithmParameters geneticAlgorithmParameters{};
     std::shared_ptr<PointInitializer> initializer{};
     std::optional<Path> bestSolution{};
+    std::vector<double> historyOfLearning{};
+    int bestSolutionNumber{};
 };
