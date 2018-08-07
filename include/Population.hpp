@@ -10,7 +10,6 @@ class Population
 {
 public:
     Population(const GeneticAlgorithmParameters &, std::shared_ptr<PointInitializer>);
-    int getRandomNumberInRange(int, int);
     Path performTournamentSelection();
     void mutation();
     void addBestPathsFromPreviousPopulationToNextPopulation(std::vector<Path> &, int) const;
@@ -23,6 +22,7 @@ public:
     void runAlgorithm();
 
 private:
+    int getRandomNumberInRange(int, int);
     void createAllInitialSolutions();
     void checkForBetterSolution();
     void saveActualScore(double);

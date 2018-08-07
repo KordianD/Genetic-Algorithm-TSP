@@ -1,7 +1,6 @@
 #include "Population.hpp"
 #include <algorithm>
 #include <iterator>
-#include <Population.hpp>
 
 
 Population::Population(const GeneticAlgorithmParameters &geneticAlgorithmParameters,
