@@ -5,7 +5,8 @@
 #include <iostream>
 #include <optional>
 #include <vector>
-#include <Point.hpp>
+
+struct Point;
 
 class Report
 {
@@ -13,9 +14,10 @@ public:
     Report(const std::optional<std::string> &, bool);
     void generateReport(const std::vector<double> &, const std::vector<Point> &, double, int) const;
 private:
-    void saveOrPrintFile(std::ostream& output, const std::vector<double> &, const std::vector<Point> &, double, int) const;
-    std::optional<std::string> pathToFile{};
+    void
+    saveOrPrintFile(std::ostream &output, const std::vector<double> &, const std::vector<Point> &, double, int) const;
     bool isVerbose{};
+    std::optional<std::string> pathToFile{};
 };
 
 
