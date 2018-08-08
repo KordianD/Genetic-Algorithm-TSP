@@ -72,6 +72,11 @@ bool Parser::isRandomModeEnabled() const
     return isCommandPassed("random");
 }
 
+bool Parser::isVerboseModeEnabled() const
+{
+    return isCommandPassed("verbose");
+}
+
 bool Parser::isCommandPassed(std::string_view command) const
 {
     return std::any_of(std::begin(arguments), std::end(arguments), [command](const auto &elem)
@@ -81,6 +86,18 @@ bool Parser::isCommandPassed(std::string_view command) const
 std::string Parser::getPassedFilePath() const
 {
     return getValueFromPassedCommand("file");
+}
+
+std::optional<std::string> Parser::getPassedLogFilePath() const
+{
+    if (isCommandPassed("log"))
+    {
+        return getValueFromPassedCommand("log");
+    }
+    else
+    {
+        return {};
+    }
 }
 
 void Parser::printHelpOptions() const
@@ -93,5 +110,7 @@ void Parser::printHelpOptions() const
               "--numberOfIteration=<int>   Pass number of iterations" << '\n' <<
               "--random   Pass this flag to use randomly generated points" << '\n' <<
               "--file=pathToFile  Pass path to file which will be used as points in algorithm" << '\n' <<
-              "--numberOfPoints=<int> Pass numberOfPoints which will be used from file or randomly generated";
+              "--log=pathToFile  Pass path to file which will be used as final report" << '\n' <<
+              "--numberOfPoints=<int> Pass numberOfPoints which will be used from file or randomly generated\n"
+              "--verbose Pass this flag to write report to standard output\n";
 }

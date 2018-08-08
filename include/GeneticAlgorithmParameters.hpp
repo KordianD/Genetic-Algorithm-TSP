@@ -1,6 +1,7 @@
 #ifndef TSP_FINAL_GENETICALGORITHMPARAMETERS_HPP
 #define TSP_FINAL_GENETICALGORITHMPARAMETERS_HPP
 
+#include <string>
 struct GeneticAlgorithmParameters
 {
     int numberOfPoints{50};

@@ -13,9 +13,11 @@ public:
     void printHelpOptions() const;
     bool isCommandPassed(std::string_view) const;
     bool isRandomModeEnabled() const;
+    bool isVerboseModeEnabled() const;
     std::optional<GeneticAlgorithmParameters> validateInput();
     std::string getValueFromPassedCommand(std::string_view command) const;
     std::string getPassedFilePath() const;
+    std::optional<std::string> getPassedLogFilePath() const;
 
 private:
     void setSizeOfPopulationParameterFromInput();

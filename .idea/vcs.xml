@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/lib/googletest" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/lib/matplotlib-cpp" vcs="Git" />
   </component>
 </project>
