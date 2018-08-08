@@ -24,6 +24,7 @@ private:
     void setMutationRateParameterFromInput();
     void setNumberOfIterationsParameterFromInput();
     void setNumberOfPointsFromInput();
+    void setPercentageOfChildrenFromPreviousGeneration();
 
     GeneticAlgorithmParameters geneticAlgorithmParameters{};
     std::vector<std::string> arguments{};

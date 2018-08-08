@@ -14,7 +14,7 @@ public:
     void drawPoints(const std::vector<Point> &points) const;
 
 private:
-    cv::Mat image{cv::Mat::zeros(400, 400, CV_8UC3)};
+    cv::Mat image{};
     const int imageWidth{};
     const int imageHeight{};
 };
