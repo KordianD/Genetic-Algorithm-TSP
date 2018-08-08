@@ -99,9 +99,10 @@ void Population::updatePopulation()
 {
     std::vector<Path> newPopulation;
     newPopulation.reserve(geneticAlgorithmParameters.numberOfPoints);
-    auto percentageOfChildrenFromPreviousGeneration = 0.9;
+
     int numberOfChildrenFromParents =
-            int(geneticAlgorithmParameters.sizeOfPopulation * percentageOfChildrenFromPreviousGeneration) / 2;
+            int(geneticAlgorithmParameters.sizeOfPopulation *
+                geneticAlgorithmParameters.percentageOfChildrenFromPreviousGeneration) / 2;
 
     for (auto i = 0; i < numberOfChildrenFromParents; ++i)
     {

@@ -28,6 +28,7 @@ std::optional<GeneticAlgorithmParameters> Parser::validateInput()
     setMutationRateParameterFromInput();
     setNumberOfIterationsParameterFromInput();
     setNumberOfPointsFromInput();
+    setPercentageOfChildrenFromPreviousGeneration();
 
     return geneticAlgorithmParameters;
 }
@@ -67,6 +68,15 @@ void Parser::setNumberOfPointsFromInput()
     }
 }
 
+void Parser::setPercentageOfChildrenFromPreviousGeneration()
+{
+    if (isCommandPassed("percentageOfChildrenFromPreviousGeneration"))
+    {
+        geneticAlgorithmParameters.percentageOfChildrenFromPreviousGeneration = std::stod(
+                getValueFromPassedCommand("percentageOfChildrenFromPreviousGeneration"));
+    }
+}
+
 bool Parser::isRandomModeEnabled() const
 {
     return isCommandPassed("random");
@@ -93,5 +103,7 @@ void Parser::printHelpOptions() const
               "--numberOfIteration=<int>   Pass number of iterations" << '\n' <<
               "--random   Pass this flag to use randomly generated points" << '\n' <<
               "--file=pathToFile  Pass path to file which will be used as points in algorithm" << '\n' <<
-              "--numberOfPoints=<int> Pass numberOfPoints which will be used from file or randomly generated";
+              "--numberOfPoints=<int> Pass numberOfPoints which will be used from file or randomly generated" << '\n' <<
+              "--percentageOfChildrenFromPreviousGeneration=<double> Pass which percentage best from previous generation will be included"
+              << '\n';
 }

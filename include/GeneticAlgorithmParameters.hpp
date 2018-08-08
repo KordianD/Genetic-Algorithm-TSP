@@ -7,6 +7,7 @@ struct GeneticAlgorithmParameters
     int sizeOfPopulation{500};
     int numberOfIterations{1000};
     double mutationRate{0.05};
+    double percentageOfChildrenFromPreviousGeneration{0.9};
 };
 
 #endif
